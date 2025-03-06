@@ -1,0 +1,272 @@
+$tablet: 1024px;
+$mobile: 768px;
+
+.container-relatorio {
+    width: 100%;
+    padding: 24px;
+    min-height: 100vh;
+    background-color: #f8fafc;
+
+    h2 {
+        margin-bottom: 24px;
+        color: #2c3e50;
+        font-size: 1.5rem;
+    }
+}
+
+.relatorio__periodo {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+
+    label {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.875rem;
+        color: #64748b;
+        font-weight: 500;
+
+        input[type="date"] {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #1e293b;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+            width: 100%;
+
+            &:hover {
+                border-color: #94a3b8;
+            }
+
+            &:focus {
+                outline: none;
+                border-color: #3498db;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            }
+
+            &::-webkit-calendar-picker-indicator {
+                cursor: pointer;
+                padding: 4px;
+                filter: invert(60%);
+                transition: all 0.2s ease;
+
+                &:hover {
+                    filter: invert(50%);
+                }
+            }
+        }
+    }
+}
+
+.graficos__relatorio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+
+    > div {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.status-dados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+
+    .card {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #3498db;
+        }
+    }
+}
+
+.analise-financeira {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+
+    > h3 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    .dados--financeiros {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+
+        .card {
+            padding: 16px;
+            border-radius: 8px;
+            background: #f8fafc;
+
+            h4 {
+                color: #64748b;
+                margin-bottom: 8px;
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #2c3e50;
+
+                &.lucro { color: #2ecc71; }
+                &.prejuizo { color: #e74c3c; }
+            }
+        }
+    }
+}
+
+.mais--vendidos {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    .tabela-container {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 8px;
+
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+
+            &:hover {
+                background: #94a3b8;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        min-width: 750px;
+        border-collapse: collapse;
+
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            background: #f8fafc;
+            color: #64748b;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+    }
+}
+
+// Responsividade
+@media (max-width: $tablet) {
+    .container-relatorio {
+        padding: 16px;
+    }
+
+    .graficos__relatorio {
+        grid-template-columns: 1fr;
+    }
+
+    .status-dados {
+        gap: 16px;
+    }
+
+    .analise-financeira {
+        .dados--financeiros {
+            gap: 16px;
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    .container-relatorio {
+        padding: 12px;
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+    }
+
+    .relatorio__periodo {
+        padding: 16px;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .status-dados,
+    .analise-financeira .dados--financeiros {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .mais--vendidos {
+        padding: 16px;
+
+        h3 {
+            font-size: 1.1rem;
+        }
+
+        table {
+            th, td {
+                padding: 8px 12px;
+                font-size: 0.875rem;
+            }
+        }
+    }
+}

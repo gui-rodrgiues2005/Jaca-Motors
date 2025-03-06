@@ -1,0 +1,311 @@
+$tablet: 1024px;
+$mobile: 768px;
+
+.container-Funcionarios {
+  width: 100%;
+  padding: 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+  overflow-y: auto;
+
+  // Estilização da barra de rolagem
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+
+    &:hover {
+      background: #94a3b8;
+    }
+  }
+
+  // Campo de busca
+  .buscar-funcionarios {
+    position: relative;
+    display: block;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+
+    input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: white;
+
+      &:focus {
+        border-color: #4361ee;
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+
+    .icon__search {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+  }
+
+  // Container principal
+  .funcionarios {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+
+    h3 {
+      padding: 1.5rem;
+      margin: 0;
+      font-size: 1.5rem;
+      color: #1e293b;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    .tabela-container {
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+    }
+
+    .tabela {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+
+      th,
+      td {
+        padding: 1rem 1.5rem;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      th {
+        background-color: #f8fafc;
+        font-weight: 600;
+        color: #475569;
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      td {
+        color: #334155;
+        font-size: 0.875rem;
+      }
+
+      tbody tr {
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #f1f5f9;
+        }
+
+        &:nth-child(even) {
+          background-color: #fafafa;
+        }
+      }
+
+      .no-data td {
+        text-align: center;
+        padding: 2rem;
+        color: #64748b;
+        font-style: italic;
+      }
+    }
+
+    .tabela-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 8px; 
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+
+        &:hover {
+          background: #94a3b8;
+        }
+      }
+    }
+  }
+
+  // Botões
+  .buttons-container-funcionarios {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      min-width: 160px;
+    }
+
+    .button-cadastrar-funcionario {
+      background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      color: white;
+      border: none;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(67, 97, 238, 0.2);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    .button-remover-funcionario {
+      background: white;
+      color: #ef4444;
+      border: 2px solid #fecaca;
+
+      &:hover {
+        background: #fff5f5;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(239, 68, 68, 0.1);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    .loading {
+      position: relative;
+      pointer-events: none;
+      opacity: 0.8;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        border-top-color: currentColor;
+        animation: spin 0.6s linear infinite;
+      }
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: $tablet) {
+  .container-Funcionarios {
+    padding: 16px;
+
+    .buttons-container-funcionarios {
+      flex-wrap: wrap;
+
+      button {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .container-Funcionarios {
+    padding: 12px;
+
+    .buscar-funcionarios {
+      margin-bottom: 1rem;
+
+      input {
+        font-size: 14px;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+      }
+    }
+
+    .funcionarios {
+      h3 {
+        font-size: 1.25rem;
+        padding: 1rem;
+      }
+
+      .tabela {
+        overflow-x: auto;
+
+        th,
+        td {
+          padding: 0.75rem 1rem;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+// Animações
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
