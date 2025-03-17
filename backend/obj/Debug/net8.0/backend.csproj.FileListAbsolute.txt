@@ -178,3 +178,10 @@ C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\System.IO.Packagi
 C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\SendGrid.dll
 C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\StarkbankEcdsa.dll
+C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\backend.staticwebassets.endpoints.json
+C:\Users\guilh\Documents\EstoqueGeral\backend\obj\Debug\net8.0\backend.sourcelink.json
+C:\Users\guilh\Documents\EstoqueGeral\backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\guilh\Documents\EstoqueGeral\backend\obj\Debug\net8.0\staticwebassets\msbuild.backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\guilh\Documents\EstoqueGeral\backend\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll

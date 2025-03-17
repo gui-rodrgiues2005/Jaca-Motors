@@ -14,14 +14,20 @@ namespace backend.Data
         public DbSet<Movimentacao> Movimentacao { get; set; }
         public DbSet<TipoMov> TiposMov { get; set; }
         public DbSet<TipoProduto> TipoProduto { get; set; }
-
-
+        public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Produto>()
                 .HasOne(p => p.TipoProduto)
                 .WithMany(t => t.Produtos)
                 .HasForeignKey(p => p.TipoProdutoID);
+            
+            modelBuilder.Entity<Empresa>()
+                .HasOne(e => e.Endereco)
+                .WithOne(e => e.Empresa)
+                .HasForeignKey<Endereco>(e => e.EmpresaID);
         }
     }
 }

@@ -2,10 +2,12 @@ $tablet: 1024px;
 $mobile: 768px;
 
 .container-relatorio {
-    width: 100%;
+    width: 90%;
     padding: 24px;
     min-height: 100vh;
     background-color: #f8fafc;
+    margin-left: 150px;
+    
 
     h2 {
         margin-bottom: 24px;
@@ -191,7 +193,6 @@ $mobile: 768px;
 
     table {
         width: 100%;
-        min-width: 750px;
         border-collapse: collapse;
 
         th {
@@ -216,6 +217,7 @@ $mobile: 768px;
 @media (max-width: $tablet) {
     .container-relatorio {
         padding: 16px;
+        margin-left: 0%;
     }
 
     .graficos__relatorio {
@@ -257,6 +259,7 @@ $mobile: 768px;
 
     .mais--vendidos {
         padding: 16px;
+        overflow-y: auto;
 
         h3 {
             font-size: 1.1rem;

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './FormAddFuncionarios.scss';
 
+
 const FormAddFuncionarios = () => {
     const navigate = useNavigate();
     const [funcionario, setFuncionario] = useState({
@@ -53,7 +54,7 @@ const FormAddFuncionarios = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email (opcional)</label>
                     <input
                         type="email"
                         id="email"
@@ -61,7 +62,6 @@ const FormAddFuncionarios = () => {
                         placeholder='exemplo@gmail.com'
                         value={funcionario.email}
                         onChange={handleChange}
-                        required
                     />
                 </div>
 

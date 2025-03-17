@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+// Variáveis
+$primary-color: #4361ee;
+$primary-hover: #b199e9;
+$error-color: #ef4444;
+$success-color: #22c55e;
+$text-primary: #1e293b;
+$text-secondary: #64748b;
+$border-color: #e2e8f0;
+$background-light: #f8fafc;
+$box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+.auth-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center; // Voltamos para center
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, $primary-color 0%, $primary-hover 100%);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+
+    // Estilização do scroll
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-light;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $border-color;
+        border-radius: 4px;
+
+        &:hover {
+            background: darken($border-color, 10%);
+        }
+    }
+
+    .auth-card {
+        width: 100%;
+        max-width: 900px;
+        max-height: 90vh; // Limita altura
+        overflow-y: auto; // Adiciona scroll ao card
+        margin: 0 auto;
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: $box-shadow;
+
+        h2 {
+            text-align: center;
+            color: $text-primary;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .welcome-text {
+            font-size: 16px;
+            color: #777;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            background: $background-light;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+
+            h3 {
+                color: $text-secondary;
+                font-size: 1.1rem;
+                margin-bottom: 1.25rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 2px solid $border-color;
+                font-weight: 500;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+
+            input {
+                width: 100%;
+                padding: 0.875rem 1rem;
+                border: 2px solid $border-color;
+                border-radius: 0.5rem;
+                font-size: 0.95rem;
+                transition: all 0.2s ease;
+                background: white;
+
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+                }
+
+                &:hover {
+                    border-color: darken($border-color, 10%);
+                }
+
+                &::placeholder {
+                    color: lighten($text-secondary, 15%);
+                }
+            }
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+            background: $primary-color;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+
+            &:hover {
+                background: $primary-hover;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+
+            &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: $text-secondary;
+            font-size: 0.95rem;
+
+            span {
+                color: $primary-color;
+                cursor: pointer;
+                font-weight: 500;
+                margin-left: 0.25rem;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    color: $primary-hover;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .senha-requisitos {
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+
+            .requisito {
+                color: #94a3b8;
+                margin: 0.25rem 0;
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                &.valido {
+                    color: #22c55e;
+                    font-weight: 500;
+                }
+
+                &:before {
+                    content: '•';
+                    color: #cbd5e1;
+                }
+
+                &.valido:before {
+                    content: '✓';
+                    color: #22c55e;
+                }
+            }
+        }
+
+        .input-password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .toggle-password {
+                position: absolute;
+                right: 12px;
+                top: 20%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                font-size: 1.2rem;
+                color: #64748b;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    color: #4361ee;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            input[type="password"],
+            input[type="text"] {
+                padding-right: 40px;
+            }
+        }
+
+        .senha-requisitos {
+            .requisito {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                &:before {
+                    content: none;
+                }
+            }
+        }
+
+        .form-group {
+            position: relative;
+
+            input[type="password"] {
+                &:focus {
+                    border-color: #4361ee;
+                    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+                }
+            }
+        }
+    }
+}
+
+// Animações
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 1rem;
+
+        .auth-card {
+            padding: 1.5rem;
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .form-section {
+                padding: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        .auth-card {
+            padding: 1.25rem;
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-section {
+                h3 {
+                    font-size: 1rem;
+                }
+            }
+
+            .form-group input {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}

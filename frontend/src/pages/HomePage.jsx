@@ -4,10 +4,43 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartPie, faBars, faTimes, faBox, faTruck, faUsers, faExchangeAlt, faFileAlt, faCog } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../assets/logo.png";
 import './HomePage.scss';
+import notification from '../components/Notifica/notification';
 
 const HomePage = () => {
+    const [showNotification, setShowNotification] = useState(false);
+    const [notificationMessage, setNotificationMessage] = useState('');
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const isSessionExpired = () => {
+        const loginTime = localStorage.getItem("loginTime");
+        const sessionDuration = 3 * 60 * 60 * 1000;// 3 horas em milissegundos;       // 60000  1 minuto
+
+        // Verifica se o loginTime existe e calcula a diferença de tempo
+        if (loginTime) {
+            const currentTime = Date.now();
+            const timeElapsed = currentTime - parseInt(loginTime);
+
+            // Se o tempo passado for maior do que a duração da sessão, expira a sessão
+            return timeElapsed > sessionDuration;
+        }
+        return true;
+    };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token || isSessionExpired()) {
+            setNotificationMessage('Pela segurança da sua empresa, pedimos que lhe seja solicitado a reautenticação');
+            setShowNotification(true);
+            localStorage.removeItem("token");
+            localStorage.removeItem("loginTime");
+            navigate("/login");
+        }
+    }, [navigate]);
+
+    const closeNotification = () => {
+        setShowNotification(false);
+    };
 
     const handleNavigation = (path) => {
         navigate(path);
@@ -26,6 +59,13 @@ const HomePage = () => {
 
     return (
         <div className="dashboard__container">
+            {showNotification && (
+                <Notification
+                    message={notificationMessage}
+                    type="warning" // Pode ser 'success', 'error' ou 'warning'
+                    onClose={closeNotification}
+                />
+            )}
             <div
                 className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}
                 onClick={handleOverlayClick}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import './FormVenda.scss';
 
@@ -19,23 +21,15 @@ const RegistrarVenda = () => {
         tipoProdutoID: 0
     });
 
-    const mapearCategoriaParaTipoID = (categoria) => {
-        switch (categoria) {
-            case 'Peças': return 1;
-            case 'Acessórios': return 2;
-            case 'Óleos e Lubrificantes': return 3;
-            case 'Pneus': return 4;
-            default: return 1;
-        }
-    };
-
     // Carregar dados iniciais
     useEffect(() => {
         // Buscar produtos
         axios
             .get("http://localhost:5096/api/Produtos")
             .then((response) => {
-                setProdutos(response.data);
+                // Filtra apenas os produtos com estoque maior ou igual a 5
+                const produtosFiltrados = response.data.filter(produto => produto.quantidadeEstoque >= 5);
+                setProdutos(produtosFiltrados);
             })
             .catch((error) => {
                 console.error("Erro ao carregar produtos", error);
@@ -128,7 +122,10 @@ const RegistrarVenda = () => {
 
     return (
         <div className="registrar-venda-container">
-            <h3>Registrar Venda</h3>
+            <div className="form-arrow">
+                <FontAwesomeIcon icon={faArrowLeft} onClick={() => navigate('/produtos')} className="icon-arrow" />
+                <h3>Registrar Venda</h3>
+            </div>
             <form onSubmit={handleSubmit} className="form-grid">
                 <div className="form-column">
                     <div className="form-group">

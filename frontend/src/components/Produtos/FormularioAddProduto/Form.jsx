@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import './Form.scss';
 
@@ -87,7 +89,10 @@ const AdicionarProduto = () => {
 
   return (
     <div className="adicionar-produto-container">
-      <h3>Adicionar Produto</h3>
+      <div className="form-arrow">
+        <FontAwesomeIcon icon={faArrowLeft} onClick={() => navigate('/produtos')} className="icon-arrow"/>
+        <h3>Adicionar Produto</h3>
+      </div>
       <form onSubmit={handleSubmit} className="form-grid">
         <div className="form-column">
           <div className="form-group">

@@ -17,7 +17,7 @@ const Funcionarios = () => {
   useEffect(() => {
     axios.get('http://localhost:5096/api/Funcionarios')
       .then((response) => {
-        console.log('Dados recebidos:', response.data); // Para debug
+        // console.log('Dados recebidos:', response.data); // Para debug
         setFuncionarios(response.data);
       })
       .catch((error) => {
